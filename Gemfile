@@ -10,6 +10,7 @@ gem 'webpacker'
 
 gem 'jbuilder', '~> 2.5'
 gem 'turbolinks', '~> 5'
+gem "faraday", "~> 0.9.0"
 
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'pry-rails'

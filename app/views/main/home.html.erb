@@ -1,17 +1,22 @@
 <div class="hero">
   <div class="hero-body container">
     <div class="title">
-      Welcome, get your <%= Loan::RATE %>% <%= Loan::TERM / 12 %> month loan now!
+      Welcome, answer a few questions to get your rate!
     </div>
 
-    <%= form_for Loan.new do %>
+    <%= form_for Loan.new do |form| %>
       <div class="field">
         <div class="control">
           <input class="input" type="text" placeholder="Email" name="email">
+          <input class="input" type="number" placeholder="Amount" name="amount">
+          <input class="input" type="number" placeholder="Credit Score" name="credit_score">
+          <input class="input" type="text" placeholder="State" name="state">
+          <input type="checkbox" id="first_time_buyer" name="first_time_buyer" value="1" unchecked>
+          <label for="first_time_buyer">First Time Home Buyer?</label>
         </div>
       </div>
 
-      <input type="submit" class="button is-success" value="Sign Up">
+      <input type="submit" class="button is-success" value="Continue">
     <% end %>
   </div>
 </div>

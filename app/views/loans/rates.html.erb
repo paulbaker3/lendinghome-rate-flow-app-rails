@@ -1,0 +1,29 @@
+<div class="hero">
+  <div class="hero-body container">
+    <div class="title">
+      <h1>Best Rate Available</h1>
+    </div>
+    <table class="centered">
+      <tr><td><%= @best["name"] %></td></tr>
+      <tr><td><%= @best["rate"] %></td></tr>
+      <tr><td><%= format_term(@best["term"]) %>-year</td></tr>
+      <tr><td><%= button_to 'Select', select_rate_path, method: :post, params: { loan_id: @loan.id, product_id: @best["id"] }%></td></tr>
+    </table>
+
+    <% if @others.present? %>
+      <div>
+        <h2>Other Options</h2>
+        <table>
+          <!-- doesn't seem worth breaking out as a partial for now -->
+          <% @others.each do |product| %>
+            <tr>
+              <td><%= product["name"] %></td>
+              <td><%= product["rate"] %></td>
+              <td><%= format_term(product["term"]) %>-year</td>
+              <tr><td><%= button_to 'Select', select_rate_path, method: :post, params: { loan_id: @loan.id, product_id: product["id"] }%></td></tr>
+          <% end %>
+        </table>
+      </div>
+    <% end %>
+  </div>
+</div>
