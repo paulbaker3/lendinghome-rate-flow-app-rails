@@ -1,0 +1,11 @@
+one:
+  name: good deal buddy
+  rate: 2.4
+  term: 180
+  user: one
+
+two:
+  name: soulbinder
+  rate: 6.64
+  term: 180
+  user: two
