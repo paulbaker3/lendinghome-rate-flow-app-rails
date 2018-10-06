@@ -14,10 +14,14 @@ gem 'turbolinks', '~> 5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'pry-rails'
 
+gem 'carmen'
+
 group :development, :test do
+  gem 'minitest'
 end
 
 group :development do
+  gem 'binding_of_caller'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'rubocop-github'
   gem 'spring'
