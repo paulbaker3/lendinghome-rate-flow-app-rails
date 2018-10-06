@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_07_205616) do
+ActiveRecord::Schema.define(version: 2018_10_05_185106) do
+
+  create_table "loan_applications", force: :cascade do |t|
+    t.decimal "requested_amount"
+    t.string "property_state"
+    t.integer "credit_score"
+    t.boolean "first_time_home_buyer"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_loan_applications_on_user_id"
+  end
 
   create_table "loans", force: :cascade do |t|
     t.decimal "rate"
