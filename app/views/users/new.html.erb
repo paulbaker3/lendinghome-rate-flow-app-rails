@@ -1,0 +1,55 @@
+<div class="hero">
+  <div class="hero-body container">
+    <div class="title">
+      Welcome apply for your best rate now!
+    </div>
+
+    <%= form_with(model: @user, local: true) do |f| %>
+      <div class="field">
+        <div class="label">
+          Email:
+        </div>
+        <div class="control">
+          <%= f.text_field :email, class: "input" %>
+        </div>
+      </div>
+
+      <%= f.fields_for :loan_application do |ff| %>
+        <div class="field">
+          <div class="label">
+            Requested Amount:
+          </div>
+          <div class="control">
+            <%= ff.text_field :requested_amount, class: "input" %>
+          </div>
+        </div>
+        <div class="field">
+          <div class="label">
+            Property State:
+          </div>
+          <div class="control">
+            <%= ff.select :property_state, US_STATES_AND_TERRITORIES %>
+          </div>
+        </div>
+        <div class="field">
+          <div class="label">
+            Credit Score:
+          </div>
+          <div class="control">
+            <%= ff.text_field :credit_score, class: "input" %>
+          </div>
+        </div>
+        <div class="field">
+          <div class="label">
+            First Time Home Buyer?:
+          </div>
+          <div class="control">
+            <%= ff.check_box :first_time_home_buyer %>
+          </div>
+        </div>
+      <% end %>
+
+      <%= f.submit "Apply", class: "button is-success" %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+<div class="title">
+  Best Rate Available
+</div>
+
+<%= form_with(model: @user, local: true) do |f| %>
+
+  <% best_product = @products.shift %>
+  <section class="section has-text-centered">
+    <div class="container">
+      <h3 class="title"><%= "#{best_product["name"].titleize}" %></h3>
+      <h4 class="title"><%= "#{best_product["rate"]}%" %></h4>
+      <h4 class="title"><%= "#{best_product["term"]/12}-year schedule" %></h4>
+
+      </p><%= button_to "Select", user_path, method: :patch,
+                params: { user: { id: @user.id, loan_attributes: {
+                      id: @user.loan.id, rate: best_product["rate"],
+                      term: best_product["term"], name: best_product["name"]
+                    }
+                  }
+                }, class: "button is-success is-large" %></p>
+    </div>
+  </section>
+
+  <% unless @products.empty? %>
+    <div class="title">
+      Other Options
+    </div>
+    <table class="table is-fullwidth" >
+      <tbody>
+      <% @products.each do |product| %>
+          <tr>
+            <td><%= "#{product["name"].titleize}" %></td>
+            <td><%= "#{product["rate"]}%" %></td>
+            <td><%= "#{product["term"]/12}-year schedule" %></td>
+            <td>
+              <%= button_to "Select", user_path, method: :patch,
+                params: { user: { id: @user.id, loan_attributes: {
+                      id: @user.loan.id, rate: product["rate"],
+                      term: best_product["term"], name: best_product["name"]
+                    }
+                  }
+                }, class: "button is-info" %>
+            </td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+  <% end %>
+<% end %>

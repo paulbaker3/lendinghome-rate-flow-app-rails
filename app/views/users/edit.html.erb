@@ -1,0 +1,9 @@
+<div class="hero">
+  <div class="hero-body container">
+    <% if @products.empty? %>
+      <%= render "no_options"   %>
+    <% else %>
+      <%= render "loan_options" %>
+    <% end %>
+  </div>
+</div>
